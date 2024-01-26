@@ -220,9 +220,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Bosses\DG_BossAttacks.resx">
       <DependentUpon>DG_BossAttacks.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Bosses\DG_BossSitChanges.resx">
       <DependentUpon>DG_BossSitChanges.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Graph.resx">
       <DependentUpon>Graph.cs</DependentUpon>

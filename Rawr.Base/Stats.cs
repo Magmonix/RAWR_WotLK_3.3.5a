@@ -311,6 +311,7 @@ namespace Rawr {
         #endregion
         #region Set Bonuses: Rogue
         RuptureDamageBonus,
+        BonusSnDHaste,
         ComboMoveEnergyReduction,
         BonusEnergyFromDP,
         RuptureCrit,
@@ -1411,6 +1412,14 @@ namespace Rawr {
         {
             get { return _rawAdditiveData[(int)AdditiveStat.RuptureDamageBonus]; }
             set { _rawAdditiveData[(int)AdditiveStat.RuptureDamageBonus] = value; }
+        }
+
+        [System.ComponentModel.DefaultValueAttribute(0f)]
+        [Category("Rogue")]
+        public float BonusSnDHaste
+        {
+            get { return _rawAdditiveData[(int)AdditiveStat.BonusSnDHaste]; }
+            set { _rawAdditiveData[(int)AdditiveStat.BonusSnDHaste] = value; }
         }
 
         [System.ComponentModel.DefaultValueAttribute(0f)]

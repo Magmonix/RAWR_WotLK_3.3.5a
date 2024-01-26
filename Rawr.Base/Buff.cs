@@ -3996,6 +3996,7 @@ namespace Rawr
             });
             #endregion
             #region Tier 6 | Slayer
+*/
             defaultBuffs.Add(new Buff()
             {
                 Name = "Slayer's Armor 2 Piece Bonus",
@@ -4006,6 +4007,7 @@ namespace Rawr
                 SetThreshold = 2,
                 AllowedClasses = new List<CharacterClass>() { CharacterClass.Rogue, },
             });
+/*
             defaultBuffs.Add(new Buff()
             {
                 Name = "Slayer's Armor 4 Piece Bonus",

@@ -682,7 +682,7 @@ namespace Rawr.Rogue
             float snDEnergyRaw = 25f;
 
             //[rawCost + ((1/chance_to_land) - 1) * rawCost/5] 
-            float cpgEnergyCostMultiplier = 1f + ((1f / chanceMHNonAvoided) - 1f) * 0.2f;
+            float cpgEnergyCostMultiplier = 1f + (((1f / chanceMHNonAvoided) - 1f) * 0.2f) - stats.ComboMoveEnergyReduction;
             float finisherEnergyCostMultiplier = 1f + ((1f / chanceMHNonAvoided) - 1f) * (1f - 0.4f * character.RogueTalents.QuickRecovery);
             float backstabEnergyAverage = backstabEnergyRaw * cpgEnergyCostMultiplier;
             float hemoEnergyAverage = hemoEnergyRaw * cpgEnergyCostMultiplier;
@@ -905,12 +905,12 @@ namespace Rawr.Rogue
             CalculationOptionsRogue calcOpts = character.CalculationOptions as CalculationOptionsRogue;
             int targetLevel = calcOpts.TargetLevel;
             bool targetPoisonable = calcOpts.TargetPoisonable;
-
-            Stats statsRace = BaseStats.GetBaseStats(80, character.Class, character.Race);
-            statsRace.PhysicalHaste = 0.4f; //Slice and Dice
-
             Stats statsItems = GetItemStats(character, additionalItem);
             Stats statsBuffs = GetBuffsStats(character, calcOpts);
+            Stats statsRace = BaseStats.GetBaseStats(80, character.Class, character.Race);
+            statsRace.PhysicalHaste = 0.4f+statsBuffs.BonusSnDHaste; //Slice and Dice
+
+
 
             RogueTalents talents = character.RogueTalents;
 
@@ -1241,6 +1241,7 @@ namespace Rawr.Rogue
                FrostResistanceBuff = stats.FrostResistanceBuff,
                ShadowResistanceBuff = stats.ShadowResistanceBuff,*/
 
+               BonusSnDHaste = stats.BonusSnDHaste,
                RuptureDamageBonus = stats.RuptureDamageBonus,
                ComboMoveEnergyReduction = stats.ComboMoveEnergyReduction,
                BonusEnergyFromDP = stats.BonusEnergyFromDP,
@@ -1328,6 +1329,7 @@ namespace Rawr.Rogue
                     stats.RuptureDamageBonus +
                     stats.ComboMoveEnergyReduction +
                     stats.BonusEnergyFromDP +
+                    stats.BonusSnDHaste +
                     stats.RuptureCrit +
                     stats.ReduceEnergyCostFromRupture +
                     stats.BonusCPGCritChance +
